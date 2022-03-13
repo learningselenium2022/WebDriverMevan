@@ -2,6 +2,7 @@
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -16,19 +17,20 @@ public class LoginTest {
 	@BeforeSuite
 	public void setUp() {
 		
-		WebDriverManager.firefoxdriver().setup();
+		WebDriverManager.chromedriver().setup();
 		
-		driver = new FirefoxDriver();
+		driver = new ChromeDriver();
 		
 	}
 	
 	@Test
-	public void doLogin() {
+	public void doLogin() throws InterruptedException {
 		
 		driver.get("https://accounts.google.com/ServiceLogin/identifier?service=mail&passive=1209600&osid=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin");
-		driver.findElement(By.name("identifier")).sendKeys("smita@gmail.com");
+		driver.findElement(By.name("identifier")).sendKeys("smitappatil@gmail.com");
 		driver.findElement(By.xpath("//*[@id=\"identifierNext\"]/div/button/span")).click();
-		
+		//Thread.sleep(2000);
+		//driver.findElement(By.name("password")).sendKeys("dsdsd");
 		
 	}
 	
